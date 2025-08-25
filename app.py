@@ -52,7 +52,7 @@ with col1:
     # Cardiac troponin I (cTnI) - 注意：编码从1开始
     ctni_options = {
         1: "Within 10 times ULN",
-        2: "Within 100 times ULN",；
+        2: "Within 100 times ULN",
         3: "Within 1,000 times ULN",
         4: "Within 10,000 times ULN",
         5: "More than 10,000 times ULN"
