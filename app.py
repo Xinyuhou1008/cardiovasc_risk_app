@@ -1,20 +1,28 @@
 import sys
 import streamlit as st
 
-# 检查关键依赖
+# 先尝试导入所有必要的包
+try:
+    import pandas as pd
+    import pickle
+    import shap
+    import matplotlib.pyplot as plt
+    import numpy as np
+    import sklearn  # scikit-learn的导入名
+    import lightgbm
+except ImportError as e:
+    # 显示详细的错误信息
+    st.error(f"包导入失败，请检查依赖关系: {str(e)}")
+    st.stop()
+
+# 兼容性检查（在导入后）
 required_packages = ['shap', 'pandas', 'lightgbm', 'sklearn', 'matplotlib']
-missing = [pkg for pkg in required_packages if pkg not in sys.modules]
+loaded_modules = sys.modules.keys()
+missing = [pkg for pkg in required_packages if pkg not in loaded_modules]
 
 if missing:
     st.error(f"关键包导入失败: {', '.join(missing)}")
     st.stop()
-
-import streamlit as st
-import pandas as pd
-import pickle
-import shap
-import matplotlib.pyplot as plt
-import numpy as np
 
 # 定义风险阈值常量
 HIGH_RISK_THRESHOLD = 0.3252  # 32.52%
